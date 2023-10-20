@@ -1,0 +1,24 @@
+{
+  "name": "companyabc_server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekul93/companyABC_server.git"
+  },
+  "author": "Luke Blair",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ekul93/companyABC_server/issues"
+  },
+  "homepage": "https://github.com/ekul93/companyABC_server#readme",
+  "description": "",
+  "start": "your-start-command",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.2"
+  }
+}
