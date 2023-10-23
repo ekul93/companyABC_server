@@ -44,7 +44,7 @@ app.get('/fetchData', (req, res) => {
     });
   });
 
- 
+  // Enable Cors
 app.get('/products/:id', function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})
 })
