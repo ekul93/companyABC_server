@@ -34,15 +34,37 @@ app.listen(port, () => {
 });
 
 app.get('/fetchData', (req, res) => {
-    db.query('SELECT * FROM carrierlist', (err, results) => {
-      if (err) {
-        console.error('Error executing query:', err);
-        res.status(500).send('Error fetching data from the database');
-        return;
-      }
-      res.json(results);
-    });
+  const { city, state, zip } = req.query;
+  let query = 'SELECT * FROM carrierlist';
+  let params = [];
+
+  if (city || state || zip) {
+    query += ' WHERE';
+    if (city) {
+      query += ' city = ?';
+      params.push(city);
+    }
+    if (state) {
+      query += city ? ' AND' : '';
+      query += ' state = ?';
+      params.push(state);
+    }
+    if (zip) {
+      query += (city || state) ? ' AND' : '';
+      query += ' zip = ?';
+      params.push(zip);
+    }
+  }
+
+  db.query(query, params, (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      res.status(500).send('Error fetching data from the database');
+      return;
+    }
+    res.json(results);
   });
+});
 
   // Enable Cors
 app.get('/products/:id', function (req, res, next) {
